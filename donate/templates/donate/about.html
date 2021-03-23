@@ -1,0 +1,63 @@
+{% extends "donate/base.html"%}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="about-section">
+  <h1>About Us</h1>
+  <p class="sub2">Care Club is a nonprofit that supports other nonprofits by connecting them to donors</p>
+  <p class="sub2">Our impact is about more than moving money to where it’s needed most</p>
+</div>
+
+<h1 class="center-align">Our Team</h1>
+<div class="row">
+  <div class="col">
+    <div class="card-about">
+      <img src="{% static 'donate/images/josh.jpg' %}" class="w3-circle">
+      <div class="container-about">
+        <h3 class="center-align">Aarhon Joshuaa A</h3>
+        <p class="title-about center-align">18I301</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card-about">
+      <img src="{% static 'donate/images/apoo.jpg' %}" class="w3-circle">
+      <div class="container-about">
+        <h3 class="center-align">Apoorva D</h3>
+        <p class="title-about center-align">18I309</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card-about">
+      <img src="{% static 'donate/images/keshini.jpg' %}" class="w3-circle">
+      <div class="container-about">
+        <h3 class="center-align">Keshini P S</h3>
+        <p class="title-about center-align">18I326</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card-about">
+      <img src="{% static 'donate/images/muhil.jpg' %}" class="w3-circle">
+      <div class="container-about">
+        <h3 class="center-align">Muhil Varsini S</h3>
+        <p class="title-about center-align">18I329</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col">
+    <div class="card-about">
+      <img src="{% static 'donate/images/sridhar.jpg' %}" class="w3-circle">
+      <div class="container-about">
+        <h3 class="center-align">Sridhar Sriram</h3>
+        <p class="title-about center-align">18I353</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

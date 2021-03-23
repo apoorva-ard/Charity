@@ -1,0 +1,47 @@
+{% extends 'donate/base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+        <center>
+        <div class="row">
+            <div class="col-md-4 offset-md-4 reg-form">
+                <h4 class="form-headings">REGISTER</h4>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div>
+                    <div class="form-group col-md-12">
+                        <label class="form-label-wt">First Name</label><br/>
+                        {% render_field form.first_name class+="form-input-style" %}
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="form-label-wt">Last Name</label><br/>
+                        {% render_field form.last_name class+="form-input-style" %}
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="form-label-wt">Username</label><br/>
+                        {% render_field form.username class+="form-input-style" %}
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="form-label-wt">Email</label><br/>
+                        {% render_field form.email class+="form-input-style" %}
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="form-label-wt">Password</label><br/>
+                        {% render_field form.password1 class+="form-input-style" %}
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="form-label-wt">Confirm Password</label><br/>
+                        {% render_field form.password2 class+="form-input-style" %}
+                    </div>
+                    </div>
+                    <button type="submit" class="button-raise2">Sign up</button>
+                </form>
+                <div class="error-msg">
+                    {{form.errors}}
+                </div>
+                <div class="col-md-12">
+                    <p class="bot-line">Already have an account?  <a href="{% url 'login' %}"> Login</a></p>
+                </div>
+            </div>
+        </div>
+    </center>
+{% endblock %}

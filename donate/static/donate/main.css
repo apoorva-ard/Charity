@@ -1,0 +1,177 @@
+body{    
+    line-height: 25px;
+}
+.reg-form{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(236, 236, 236);
+    padding-top: 30px;
+}
+.bot-line{
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.form-headings{
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+.card-col{
+    margin-top: 5px;
+}
+.home-img {
+    width: 100%;
+    min-height: 380px;
+}
+.bgimg-wt{
+    background-image: url('./images/bg-home.jpg');
+}
+.card-about {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    margin-bottom: 20px;
+    min-height: 300px;
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color:orange;
+    color: white;
+}
+.raise-section {
+    padding: 65px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+}
+.raise-section h1{
+    font-size: 35px;
+    font-weight: 400;
+}
+.contact-section {
+    padding: 50px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+}
+.sub3-contact{
+    color:rgb(252, 248, 248);
+}
+
+.container-about {
+    padding: 0 16px;
+}
+
+.container-about::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.title-about {
+    color: grey;
+}
+.sub2{
+    color:rgb(252, 248, 248);
+}
+
+.w3-circle{
+    width: 150px;
+    height: 150px;
+    margin-left: 9%;
+    margin-top: 5%;
+}
+
+.center-align{
+    text-align: center;
+}
+
+.form-label-wt{
+    color: rgb(88, 86, 86);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.bot-margin{
+    margin-bottom: 20px;
+}
+.top-margin{
+    margin-top: 20px;
+}
+
+.form-input-style{
+    width: 80%;
+    font-size: 15px;
+    height: 30px;
+}
+.progress-color{
+    background-color: rgb(180, 179, 178);
+}
+.form-input-style-2{
+    width: 100%;
+    font-size: 15px;
+    height: 35px;
+    margin: 5px;
+}
+.success-project{
+    min-height: 350px;
+}
+
+.form-input-style-3{
+    width: 100%;
+    font-size: 15px;
+    margin: 5px;
+}
+.button-raise {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.button-raise2 {
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 8px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.pb-height{
+    height: 40px;
+}
+.pb-height2{
+    height: 40px;
+}
+.general-style{
+    color: black;
+}
+.message-dialog-success{
+    background-color: rgb(76, 204, 161);
+    padding: 20px;
+    width: 60%;
+    height: 70px;
+}
+.message-dialog-failure{
+    background-color: rgb(230, 111, 111);
+    padding: 20px;
+    width: 60%;
+    height: 70px;
+}
+.error-msg{
+    font-size: 15px;
+    color: red;
+}

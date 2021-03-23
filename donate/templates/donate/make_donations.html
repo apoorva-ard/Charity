@@ -1,0 +1,74 @@
+{% extends "donate/base.html"%}
+{% load static %}
+{% block content %}
+{% load mathfilters %}
+<div class="w3-center top-margin">
+    <div class="row">
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'success' in message.extra_tags %}
+                    <div class="message-dialog-success col-lg-6 offset-lg-3 bot-margin">
+                        <p class="general-style center-align">{{ message }}</p>
+                    </div>
+                {% else %}
+                    <div class="message-dialog-failure col-lg-6 offset-lg-3 bot-margin">
+                        <p class="general-style center-align">{{ message }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <h1 style="color:black;text-align:center;"> Donate for {{cause.title}} </h1>
+            <p class="top-margin" style="color:black;text-align:center;">  {{cause.description}} </p>        
+        </div>
+    </div>
+    
+    <div class="row" style="min-height: 348px;">
+        <div class="col-lg-6 offset-lg-3 reg-form">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <label for="Name" class="form-label-wt">Name</label>
+                    <input type="text" class="form-input-style-2" id="Name" name="name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="descip" class="form-label-wt">Comments</label>
+                    <textarea type="text" id="descip" name="comments" rows="4" class="form-input-style-3 md-textarea"></textarea>      
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="dob" class="form-label-wt">DOB</label>
+                    <input type="date" class="form-input-style-2" name="dob" id="dob">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="amt" class="form-label-wt">Amount</label>
+                    <input type="number" step="0.1" class="form-input-style-2" name="amount" id="amt">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="acc" class="form-label-wt">Account</label>
+                    <input type="text" step="1" class="form-input-style-2" name="account" id="acc">
+                </div>
+            </div>
+            <div class="row bot-margin">
+                <div class="col">
+                    <br/>
+                    <center>
+                    <button type="submit" class="button-raise">Submit</button>
+                    </center>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+{% endblock %}

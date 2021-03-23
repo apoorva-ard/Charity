@@ -1,0 +1,32 @@
+{% extends 'donate/base.html' %}
+{% block content %}
+    <div class="row" style="height: 5vh;">.</div>
+    <div class="row">
+        <div class="col-md-4 offset-md-4 reg-form">
+            <center>
+            <h4 class="form-headings">LOGIN</h4>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group col-md-12">
+                    <label for="ipuname" class="form-label-wt">Username</label><br/>
+                    <input type="text" class="form-input-style" id="ipuname" name="username">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="ippwd" class="form-label-wt">Password</label><br/>
+                    <input type="password" class="form-input-style" id="ippwd" name="password">
+                </div>
+                <button type="submit" class="button-raise2">Login</button>
+            </form>
+            <div class="error-msg">
+                {% for msg in messages %}
+                    <div>*{{msg}}</div>
+                {% endfor %}
+            </div>
+            <div class="col-md-12">
+                <p class="bot-line">Don't have an account?  <a href="{% url 'register' %}">Register</a></p>
+            </div>
+            </center>
+        </div>
+    </div>
+    <div class="row" style="height: 8vh;"></div>
+{% endblock %}

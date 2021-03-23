@@ -1,0 +1,41 @@
+{% extends "donate/base.html"%}
+{% load static %}
+{% block content %}
+{% load mathfilters %}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://cdn.logwork.com/widget/countdown.js"></script>
+<script>
+  var perfEntries = performance.getEntriesByType("navigation");
+
+  if (perfEntries[0].type === "back_forward") {
+      location.reload(true);
+  }
+</script>
+<div  style="min-height: 90%;" class="w3-center">
+  <br><br>
+  <center>
+    {% for cause in causes%}
+
+      <div class="col w3-center w3-hover-shadow " style="width:80%;">
+        <div class="card text-center " style="background-color:rgb(196, 196, 191);">
+          <div class="card-header w3-orange" style="color:black;">
+              {{cause.title}}
+          </div>
+          <div class="card-body">
+            <p style="color:black;" class="card-text">{{cause.description}}</p>
+            <a class="btn btn-primary btn-lg" href="../make_donations/?id={{cause.id}}">Donate</a>
+          </div>
+          <div class="progress w3-white" style="height: 20px">
+            <div class="progress-bar w3-orange progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow= "50" aria-valuemin="0" aria-valuemax="100" style="width: {{ cause.collected|div:cause.target|mul:100 }}%"></div>
+          </div>
+          <div class="bot-margin">
+            <p style="display: inline;color:black;"><strong>Amount Needed: </strong> Rs. {{cause.target|sub:cause.collected}}</p>
+          </div>
+        </div>
+      </div>
+      <br><br>
+    {% endfor %}
+  </center>
+</div>
+{% endblock %}
