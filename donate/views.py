@@ -1,7 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cause, Contact, Donor
+from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import datetime
+from rest_framework.views import APIView 
+from rest_framework.response import Response
+from . serializer import *
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+
 
 def home(request):
     context={'nbar':'home', 'projects':Cause.objects.filter(completed=True)}
@@ -64,3 +70,71 @@ def make_donations(request):
 
     return render(request, "donate/make_donations.html", context)
 
+
+class ContactView(APIView):
+
+    def get(self, request): 
+        detail = [ {"id":detail.id ,"name": detail.name,"email": detail.email, "subject": detail.subject, "message": detail.message} for detail in Contact.objects.filter(unread=True)] 
+        return Response(detail)
+        
+    def post(self, request):
+        serializer = ContactSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            cid = serializer.data
+            cid = cid['id']
+            x = Contact.objects.get(id=cid)
+            x.unread = False
+            x.save()
+            return Response(status=200)
+        return Response(status=400)
+
+
+class CauseView(APIView):
+    
+    def get(self, request):
+        detail = [ {
+            "id":detail.id,
+            "title": detail.title,
+            "description": detail.description, 
+            "date_posted": detail.date_posted, 
+            "date_needed": detail.date_needed, 
+            "target": detail.target, 
+            "collected": detail.collected, 
+            "recepient_uname": detail.recepient.username,
+            "recepient_name": detail.recepient.first_name, 
+            "recepient_email": detail.recepient.email,
+            "recepient_prev_d": Cause.objects.filter(recepient=detail.recepient).count()
+            } for detail in Cause.objects.filter(accepted=False)]
+        return Response(detail)
+
+    def post(self, request):
+        serializer = CausePostSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            data = serializer.data
+            cid = data['id']
+            accept = data['accept']
+            x = Cause.objects.get(id=cid)
+            if(accept==True):
+                x.accepted = True
+                x.save()
+                return Response(status=200)
+            else:
+                x.delete()
+                return Response(status=200)
+        return Response(status=400)
+
+class UserView(APIView):
+    
+    def post(self, request):
+        serializer = UserPostSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            data = serializer.data
+            uname = data['uname']
+            pwd = data['pwd']
+            user = authenticate(request, username=uname, password=pwd)
+            if(user is not None):
+                staff = User.objects.filter(username=uname, is_staff=True)
+                if (staff is not None):
+                    return Response(status=200)
+
+        return Response(status=400)

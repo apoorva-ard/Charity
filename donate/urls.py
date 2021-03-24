@@ -8,5 +8,8 @@ urlpatterns = [
     path('contact/', views.contact, name='app-contact'),
     path('donate/', views.donate, name='app-donate'),
     path('raisefund/', views.raisefund, name='app-raise-fund'),
-    path('make_donations/', views.make_donations, name='app-make-donations')
+    path('make_donations/', views.make_donations, name='app-make-donations'),
+    path('rcontact/', views.ContactView.as_view(), name='r-contact'),
+    path('rcauses/', views.CauseView.as_view(), name='r-cause'),
+    path('ruser/', views.UserView.as_view(), name='r-user')
 ]

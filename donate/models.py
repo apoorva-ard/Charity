@@ -18,6 +18,7 @@ class Contact(models.Model):
     email = models.EmailField()
     subject = models.TextField()
     message = models.TextField()
+    unread = models.BooleanField(default=True)
         
 class Donor(models.Model):
     name = models.CharField(max_length=200)
