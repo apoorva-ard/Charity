@@ -36,7 +36,18 @@
                     <button type="submit" class="button-raise2">Sign up</button>
                 </form>
                 <div class="error-msg">
-                    {{form.errors}}
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                {{ error|escape }}<br/>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="error-msg">
+                    {% for msg in messages %}
+                        <div>*{{msg}}</div>
+                    {% endfor %}
                 </div>
                 <div class="col-md-12">
                     <p class="bot-line">Already have an account?  <a href="{% url 'login' %}"> Login</a></p>

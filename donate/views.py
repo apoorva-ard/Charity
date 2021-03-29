@@ -42,7 +42,7 @@ def raisefund(request):
         context={'nbar':'raise'}
         return render(request, "donate/raisefund.html", context)
     else:
-        context={'redirect':'yes'}
+        context={'nbar':'raise','redirect':'yes'}
         return render(request, "donate/raisefund.html", context)
 
 def make_donations(request):

@@ -1,6 +1,16 @@
 {% extends 'donate/base.html' %}
 {% block content %}
     <div class="row" style="height: 5vh;">.</div>
+    {% for msg in messages %}
+        {% if msg.tags == 'success' %}
+        <div class="row">
+            <div class="message-dialog-success col-lg-6 offset-lg-3 bot-margin">
+                <p class="general-style center-align">{{ msg }}</p>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    
     <div class="row">
         <div class="col-md-4 offset-md-4 reg-form">
             <center>
@@ -19,7 +29,9 @@
             </form>
             <div class="error-msg">
                 {% for msg in messages %}
-                    <div>*{{msg}}</div>
+                    {% if msg.tags != 'success' %}
+                        <div>*{{msg}}</div>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="col-md-12">

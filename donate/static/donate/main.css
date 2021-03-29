@@ -101,6 +101,10 @@ body{
     margin-top: 20px;
 }
 
+.grayc{
+    background-color: rgb(180, 179, 178);
+}
+
 .form-input-style{
     width: 80%;
     font-size: 15px;
